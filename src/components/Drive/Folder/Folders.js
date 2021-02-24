@@ -1,5 +1,4 @@
 import React from "react";
-import { ContextMenu, ContextMenuTrigger, MenuItem } from "react-contextmenu";
 import Folder from "./Folder";
 
 function Folders({ childFolders }) {

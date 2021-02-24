@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Container } from "react-bootstrap";
 import { useLocation, useParams } from "react-router-dom";
 import NavbarComponent from "./NavBar";
@@ -28,7 +28,7 @@ export default function Drive() {
         </div>
         {childFolders.length > 0 && <Folders childFolders={childFolders} /> }
         {childFolders.length > 0 && childFiles.length > 0 && <hr />}
-        {childFiles.length > 0 && <Files childFiles={childFiles} /> }
+        {childFiles.length > 0 && <Files currentFolder={folder} childFiles={childFiles} /> }
       </Container>
     </>
   );

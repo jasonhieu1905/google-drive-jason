@@ -7,7 +7,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import DeleteModal from "../DeleteModal";
 
-export default function File({ file }) {
+export default function File({ currentFolder, file }) {
   const [openDeleteModal, setOpenDeleteModal] = useState(false);
 
   const closeDeleteModal = () => {
@@ -46,6 +46,7 @@ export default function File({ file }) {
 
       {openDeleteModal && <DeleteModal
         item={file}
+        currentFolder={currentFolder}
         open={openDeleteModal}
         closeModal={closeDeleteModal}
       />}

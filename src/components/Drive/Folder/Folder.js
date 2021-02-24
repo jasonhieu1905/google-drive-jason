@@ -4,10 +4,7 @@ import { Button } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFolder } from "@fortawesome/free-solid-svg-icons";
 import { ContextMenu, ContextMenuTrigger, MenuItem } from "react-contextmenu";
-import {
-  faEdit,
-  faTrash,
-} from "@fortawesome/free-solid-svg-icons";
+import { faEdit, faTrash } from "@fortawesome/free-solid-svg-icons";
 import RenameModal from "../RenameModal";
 import DeleteModal from "../DeleteModal";
 
@@ -28,8 +25,10 @@ export default function Folder({ folder }) {
       case "rename":
         setOpenRenameModal(true);
         break;
-      case 'delete':
+      case "delete":
         setOpenDeleteModal(true);
+        break;
+      default:
         break;
     }
   }
@@ -51,31 +50,29 @@ export default function Folder({ folder }) {
         </Button>
       </ContextMenuTrigger>
       <ContextMenu id={folder.id}>
-        <MenuItem
-          data={{ action: "rename" }}
-          onClick={handleClick}
-        >
+        <MenuItem data={{ action: "rename" }} onClick={handleClick}>
           <FontAwesomeIcon icon={faEdit} className="mr-2" />
           Rename
         </MenuItem>
-        <MenuItem
-          data={{ action: "delete" }}
-          onClick={handleClick}
-        >
+        <MenuItem data={{ action: "delete" }} onClick={handleClick}>
           <FontAwesomeIcon icon={faTrash} className="mr-2" />
           Delete
         </MenuItem>
       </ContextMenu>
-      {openRenameModal && <RenameModal
-        item={folder}
-        open={openRenameModal}
-        closeModal={closeRenameModal}
-      />}
-       {openDeleteModal && <DeleteModal
-        item={folder}
-        open={openDeleteModal}
-        closeModal={closeDeleteModal}
-      />}
+      {openRenameModal && (
+        <RenameModal
+          item={folder}
+          open={openRenameModal}
+          closeModal={closeRenameModal}
+        />
+      )}
+      {openDeleteModal && (
+        <DeleteModal
+          item={folder}
+          open={openDeleteModal}
+          closeModal={closeDeleteModal}
+        />
+      )}
     </div>
   );
 }
